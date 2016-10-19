@@ -1,4 +1,7 @@
-# \<gun-p2p-auth\>
+# gun-p2p-auth
+=========
+[![license](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://github.com/swifty/gun-p2p-auth/blob/master/LICENSE.txt)
+[![GitHub version](https://badge.fury.io/gh/swifty%2Fgun-p2p-auth.svg)](https://badge.fury.io/gh/swifty%2Fgun-p2p-auth)
 
 A Gun chain p2p auth script and Polymer component.
 
@@ -18,6 +21,14 @@ $ polymer serve
 And then in your browser go to:
 
 [http://localhost:8080/bower_components/gun-p2p-auth/demo/index.html](http://localhost:8080/bower_components/gun-p2p-auth/demo/index.html)
+
+## Try the standalone demo
+
+Don't want to use Bower, Npm or RequireJs?
+
+Sure, no problem :-)
+
+Download the git repository here and point your browser to the **standalone.html** file in the demo directory.
 
 ## Example usage in a Polymer app
 
