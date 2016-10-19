@@ -1,7 +1,8 @@
 # gun-p2p-auth
-=========
+
 [![license](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://github.com/swifty/gun-p2p-auth/blob/master/LICENSE.txt)
-[![GitHub version](https://badge.fury.io/gh/swifty%2Fgun-p2p-auth.svg)](https://badge.fury.io/gh/swifty%2Fgun-p2p-auth)
+[![GitHub](https://badge.fury.io/gh/swifty%2Fgun-p2p-auth.svg)](https://badge.fury.io/gh/swifty%2Fgun-p2p-auth)
+[![Bower](https://badge.fury.io/bo/gun-p2p-auth.svg)](https://badge.fury.io/bo/gun-p2p-auth)
 
 A Gun chain p2p auth script and Polymer component.
 
