@@ -6,7 +6,7 @@ A Gun chain p2p auth script and Polymer component.
 
 Inside your bower application directory do:
 ```
-$ bower install --save gun-p2p-auth
+$ bower install --save swifty/gun-p2p-auth
 ```
 
 ## Try the Polymer demo
