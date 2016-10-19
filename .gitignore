@@ -1,0 +1,15 @@
+.well-known
+cfg.php
+phpmyadmin*
+info.php
+node_modules
+
+datasources.json
+
+database.json
+knexfile.js
+
+data.json
+
+bower_components
+/todo

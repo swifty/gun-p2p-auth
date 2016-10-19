@@ -1,0 +1,19 @@
+* text eol=lf
+*.txt eol=crlf
+
+*.png binary
+*.gif binary
+*.jpg binary
+*.jpeg binary
+
+*.otf binary
+*.eot binary
+*.ttf binary
+*.woff binary
+
+*.gz binary
+*.zip binary
+
+*.db binary
+
+*.phar binary

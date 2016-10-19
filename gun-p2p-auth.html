@@ -1,0 +1,39 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<script src="../gun/gun.js" type="text/javascript"></script>
+
+<script src="../crypto-js/crypto-js.js" type="text/javascript"></script>
+<script src="../kjur-jsrsasign/jsrsasign-latest-all-min.js" type="text/javascript"></script>
+
+<script src="./gun-p2p-auth.js" type="text/javascript"></script>
+
+<!--
+`gun-p2p-auth`
+A Gun chain p2p auth script and Polymer component.
+
+@demo demo/index.html 
+-->
+
+<dom-module id="gun-p2p-auth">
+    <script>
+        Polymer( {
+
+            is: 'gun-p2p-auth',
+
+            doLogin: function( gun, userName, password, opt, cb ) {
+                cb = cb || function() {};
+                opt = opt || {};
+
+                gun.p2pAuthLogin( userName, password, opt, cb );
+            },
+
+            doRegister: function( gun, userName, password, opt, cb ) {
+                cb = cb || function() {};
+                opt = opt || {};
+
+                gun.p2pAuthRegister( userName, password, opt, cb );
+            }
+
+        } );
+    </script>
+</dom-module>

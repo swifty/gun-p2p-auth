@@ -1,0 +1,17 @@
+{
+  "name": "gun-p2p-auth",
+  "description": "A Gun chain p2p auth script and Polymer component.",
+  "main": "gun-p2p-auth.html",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.4.0",
+    "crypto-js": "^3.1.7",
+    "kjur-jsrsasign": "jsrsasign#^6.1.13",
+    "gun": "^0.3.995"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.0.0",
+    "web-component-tester": "^4.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
+  }
+}

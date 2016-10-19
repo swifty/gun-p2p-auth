@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+    <title>gun-p2p-auth demo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+
+    <link rel="import" href="../gun-p2p-auth.html">
+
+    <style is="custom-style" include="demo-pages-shared-styles">
+    </style>
+</head>
+<body>
+
+<dom-module id="x-foo">
+    <template>
+        <gun-p2p-auth id="gunp2pauth"></gun-p2p-auth>
+
+        <span style="color:red;">First make sure you have a Gun server running on http://127.0.0.1:8081</span><br><br>
+        <span>Then first register a new user with the form below and after that try to login with the form below that.</span>
+
+        <h2>Register form</h2>
+        Username:<br>
+        <input id="register_username" name="username" value=''><br><br>
+        Password:<br>
+        <input id="register_password" name="password" type="password" value=''><br><br>
+        <button id="register_button" type="button" on-click="doRegister">Register</button>
+        <br><br>
+
+        <h2>Login form</h2>
+        Username:<br>
+        <input id="login_username" name="username" value=''><br><br>
+        Password:<br>
+        <input id="login_password" name="password" type="password" value=''><br><br>
+        <button id="login_button" type="button" on-click="doLogin">Login</button>
+        <br><br>
+    </template>
+    <script>
+        Polymer( {
+            is: 'x-foo',
+            doLogin: function() {
+                var userName = document.getElementById( 'login_username' ).value;
+                var password = document.getElementById( 'login_password' ).value;
+                this.$.gunp2pauth.doLogin( Gun( 'http://127.0.0.1:8081' ), userName, password, {}, function( res ) {
+                    alert( 'Login result: ' + res.status );
+                } );
+            },
+            doRegister: function() {
+                var userName = document.getElementById( 'register_username' ).value;
+                var password = document.getElementById( 'register_password' ).value;
+                this.$.gunp2pauth.doRegister( Gun( 'http://127.0.0.1:8081' ), userName, password, {}, function( res ) {
+                    alert( 'Register result: ' + res.status );
+                } );
+            }
+
+        } );
+    </script>
+</dom-module>
+
+<div class="vertical-section-container centered">
+    <h3>Basic gun-p2p-auth Demo</h3>
+    <demo-snippet>
+        <x-foo></x-foo>
+        <template>
+            <gun-p2p-auth id="gunp2pauth"></gun-p2p-auth>
+        </template>
+    </demo-snippet>
+</div>
+
+</body>
+</html>

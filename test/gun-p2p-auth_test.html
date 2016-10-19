@@ -1,0 +1,32 @@
+<!doctype html>
+
+<html>
+  <head>
+    <title>gun-p2p-auth test</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../web-component-tester/browser.js"></script>
+
+    <link rel="import" href="../gun-p2p-auth.html">
+  </head>
+  <body>
+
+    <test-fixture id="basic">
+      <template>
+        <gun-p2p-auth></gun-p2p-auth>
+      </template>
+    </test-fixture>
+
+    <script>
+      suite('gun-p2p-auth', function() {
+
+        test('instantiating the element works', function() {
+          var element = fixture('basic');
+          assert.equal(element.is, 'gun-p2p-auth');
+        });
+
+      });
+    </script>
+  </body>
+</html>
