@@ -9,66 +9,97 @@
     <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
     <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
 
+    <!-- loading gun-db so i can get v0.4 -->
+    <link rel="import" href="../../gun-db/v5/gun-db.html">
+
     <link rel="import" href="../gun-p2p-auth.html">
 
     <style is="custom-style" include="demo-pages-shared-styles">
     </style>
+
 </head>
 <body>
+<!--
+  using gun-db element but you can also setup your own gun
+  the user might like to use another variable for its Gun instance
+  so gun-db accepts a variable to use.
+  Just make sure you also pass this variable to 'gun-p2p-auth'
+  <gun-p2p-auth gun-var="gun"></gun-p2p-auth>
+-->
+<gun-db gun-var="gun" peers="http://127.0.0.1:8081"></gun-db>
 
-<dom-module id="x-foo">
-    <template>
-        <gun-p2p-auth id="gunp2pauth"></gun-p2p-auth>
-
-        <span style="color:red;">First make sure you have a Gun server running on http://127.0.0.1:8081</span><br><br>
-        <span>Then first register a new user with the form below and after that try to login with the form below that.</span>
-
+<div class="vertical-section-container centered">
+    <h3>Basic gun-p2p-auth Demo</h3>
+    <p>First make sure you have a Gun server running on http://127.0.0.1:8081<br>
+        Then first register a new user with the form below and after that try to login with the form below that.
+    </p>
+    <!-- template is="dom-bind" gives me Polymer possibilities outside an element -->
+    <template id="fakeElement" is="dom-bind">
+        <gun-p2p-auth id="gunp2pauth" gun-var="gun"></gun-p2p-auth>
         <h2>Register form</h2>
         Username:<br>
-        <input id="register_username" name="username" value=''><br><br>
+        <input id="register_username"><br><br>
         Password:<br>
-        <input id="register_password" name="password" type="password" value=''><br><br>
-        <button id="register_button" type="button" on-click="doRegister">Register</button>
+        <input id="register_password" type="password"><br><br>
+        <button id="register_button" type="button" on-click="onRegister">Register</button>
         <br><br>
 
         <h2>Login form</h2>
         Username:<br>
-        <input id="login_username" name="username" value=''><br><br>
+        <input id="login_username"><br><br>
         Password:<br>
-        <input id="login_password" name="password" type="password" value=''><br><br>
-        <button id="login_button" type="button" on-click="doLogin">Login</button>
+        <input id="login_password" type="password"><br><br>
+        <button id="login_button" type="button" on-click="onLogin">Login</button>
         <br><br>
-    </template>
-    <script>
-        Polymer( {
-            is: 'x-foo',
-            doLogin: function() {
-                var userName = document.getElementById( 'login_username' ).value;
-                var password = document.getElementById( 'login_password' ).value;
-                this.$.gunp2pauth.doLogin( Gun( 'http://127.0.0.1:8081' ), userName, password, {}, function( res ) {
-                    alert( 'Login result: ' + res.status );
-                } );
-            },
-            doRegister: function() {
-                var userName = document.getElementById( 'register_username' ).value;
-                var password = document.getElementById( 'register_password' ).value;
-                this.$.gunp2pauth.doRegister( Gun( 'http://127.0.0.1:8081' ), userName, password, {}, function( res ) {
-                    alert( 'Register result: ' + res.status );
-                } );
-            }
+        <script>
+            // In a Polymer element we would use 'this', but now we have to refer to the template -->
+            var doc = document.getElementById( 'fakeElement' );
 
-        } );
-    </script>
-</dom-module>
+            doc.onRegister = function() {
+                var userName = doc.$.register_username.value;
+                var password = doc.$.register_password.value;
+                doc.$.gunp2pauth.register( userName, password )
+            };
+            doc.onLogin = function() {
+                var userName = doc.$.login_username.value;
+                var password = doc.$.login_password.value;
+                doc.$.gunp2pauth.login( userName, password )
+            };
+        </script>
 
-<div class="vertical-section-container centered">
-    <h3>Basic gun-p2p-auth Demo</h3>
-    <demo-snippet>
-        <x-foo></x-foo>
-        <template>
-            <gun-p2p-auth id="gunp2pauth"></gun-p2p-auth>
         </template>
-    </demo-snippet>
+
+        <demo-snippet>
+            <h3>Basic usage</h3>
+            <template>
+                <gun-p2p-auth id="auth"></gun-p2p-auth>
+            </template>
+        </demo-snippet>
+
+        <demo-snippet>
+            <h3>Setting gun variable</h3>
+            <p>Internally 'gun-p2p-auth' uses 'gun' as variable for Gun<br>
+                but you can provide your own var</p>
+            <template>
+                <gun-p2p-auth gun-var="granate"></gun-p2p-auth>
+            </template>
+        </demo-snippet>
+
+        <demo-snippet>
+            <h3>useGunChain option </h3>
+            <p>Discription</p>
+            <template>
+                <gun-p2p-auth use-gun-chain></gun-p2p-auth>
+            </template>
+        </demo-snippet>
+
+        <demo-snippet>
+            <h3>noPut option </h3>
+            <p>Discription</p>
+            <template>
+                <gun-p2p-auth no-put></gun-p2p-auth>
+            </template>
+        </demo-snippet>
 </div>
 
 </body>

@@ -70,7 +70,7 @@
                 } else {
                     loginState = 'loggedin';
                     cb( {
-                        status: 'success',
+                        status: 'loggedin',
                         prkey: prvObj.ky,
                         usernode: node
                     } );
