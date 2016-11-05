@@ -119,6 +119,8 @@ and call its 'login'  or 'register'  functions
 //                console.log( 'loginCb', res );
                 this.set( 'state.status', res.status );
                 this.set( 'state.prkey', res.prkey );
+
+                this.set( 'state.usernode', res.usernode );
             },
 
             register: function( userName, password ) {
