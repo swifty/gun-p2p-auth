@@ -118,7 +118,7 @@
         };
 
         if( ! opt.noPut ) {
-            gun.put( res ).key( key );
+            gun.get( key ).put( res );
         }
 
         res.status = 'success';
